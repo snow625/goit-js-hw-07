@@ -37,8 +37,7 @@ function onClickGalaryItem(event) {
     window.addEventListener("keydown", closeModal);
     function closeModal(event) {
       if (event.code === "Escape") {
-        instance.close();
-        window.removeEventListener("keydown", closeModal);
+        instance.close(() => window.removeEventListener("keydown", closeModal));
       }
     }
   }
