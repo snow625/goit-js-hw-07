@@ -29,15 +29,23 @@ function addGaleryToHTML(galleryItems) {
 function onClickGalaryItem(event) {
   if (event.target.nodeName === "IMG") {
     event.preventDefault();
-    const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(
+      `
     <img src="${event.target.dataset.source}" width="800" height="600">
-`);
-
+`,
+      {
+        onClose: (instance) => {
+          window.removeEventListener("keydown", closeModal);
+        },
+      }
+    );
     instance.show();
+
     window.addEventListener("keydown", closeModal);
     function closeModal(event) {
+      console.log("NANANA");
       if (event.code === "Escape") {
-        instance.close(() => window.removeEventListener("keydown", closeModal));
+        instance.close();
       }
     }
   }
