@@ -43,7 +43,6 @@ function onClickGalaryItem(event) {
 
     window.addEventListener("keydown", closeModal);
     function closeModal(event) {
-      console.log("NANANA");
       if (event.code === "Escape") {
         instance.close();
       }
